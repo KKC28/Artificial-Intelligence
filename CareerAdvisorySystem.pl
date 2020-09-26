@@ -38,9 +38,9 @@ career(gateCoaching):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('1. Coaching students preparing for GATE exam by joing some GATE coaching centers.'),nl,
-    write('2. Starting your own YouTube channel for coaching GATE aspirants.'),nl,
+    write("====================================================================="),nl,nl,
+    write('1. Coaching students preparing for GATE exam by joing some GATE coaching centers.'),nl,nl,
+    write('2. Starting your own YouTube channel for coaching GATE aspirants.'),nl,nl,
     write('3. Opening your own coaching center for training GATE aspirants.'),nl.
 
     
@@ -60,7 +60,7 @@ career(assitantProfessor):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
+    write("====================================================================="),nl,nl,
     write('Doctarate in Philosophy(PhD) with TF.').
 
 % One can join phd and teach as assistant professor
@@ -74,9 +74,9 @@ career(teacher):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('1. To compelete B.ED and then apply for job as School Teacher.'),nl,
-    write('2. To open your own YouTube channel and teach students of your domain.'),nl,
+    write("====================================================================="),nl,nl,
+    write('1. To compelete B.ED and then apply for job as School Teacher.'),nl,nl,
+    write('2. To open your own YouTube channel and teach students of your domain.'),nl,nl,
     write('3. To open your own Coaching Center and teach students of your domain.'),nl.
 
 % Last option in the teaching domain
@@ -84,11 +84,11 @@ career(drop):-
     interestedInTeaching(yes),
     nl,nl,
     write('Kindly carry out one of the below options to better your chances in Teaching Profile:'),nl,
-    write("====================================================================="),nl,
-    write('1. Take up a Certification Course in Teaching and Training in your domain and apply for the Teaching jobs.'),nl,
-    write('2. Re-take the GATE test to imporve your score to coach GATE Aspirants.'),nl,
-    write('3. Start working on your research domain to better your chances.'),nl,
-    write('2. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
+    write("====================================================================="),nl,nl,
+    write('1. Take up a Certification Course in Teaching and Training in your domain and apply for the Teaching jobs.'),nl,nl,
+    write('2. Re-take the GATE test to imporve your score to coach GATE Aspirants.'),nl,nl,
+    write('3. Start working on your research domain to better your chances.'),nl,nl,
+    write('4. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
 
     
 
@@ -115,8 +115,8 @@ career(research_corporate_job):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('Joining/looking for a Corporate Job in research profile.').
+    write("====================================================================="),nl,nl,
+    write('Joining/looking for a Corporate Job in Research Profile.').
 
 % One can work in a corporate world
 career(corporate_job):-
@@ -137,8 +137,8 @@ career(corporate_job):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('Joining/looking for a Corporate Job.').
+    write("====================================================================="),nl,nl,
+    write('Joining/looking for a Corporate Job in IT Sector.').
     
     
 % One can work in a corporate world
@@ -159,8 +159,8 @@ career(startup_job):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('Joining/looking for a Corporate Job in startups.').
+    write("====================================================================="),nl,nl,
+    write('Joining/looking for a Corporate Job in Startups.').
     
 % One can go for PSU
 career(government_job):-
@@ -175,7 +175,7 @@ career(government_job):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
+    write("====================================================================="),nl,nl,
     write('Joining/looking for a Government Job.').
     
 % If nothing suits your profile drop for a year to prepare better.  
@@ -185,9 +185,9 @@ career(drop):-
     financialRequirement(yes),
     nl,nl,
     write('Kindly carry out one of the below options to better your chances in Non-Teaching Profile:'),nl,
-    write("====================================================================="),nl,
-    write('1. Join some trainaing Institutes and prepare for the job in your domain.'),nl,
-    write('2. Self-Study to prepare yourself better for the coporate world.'),nl,
+    write("====================================================================="),nl,nl,
+    write('1. Join some trainaing Institutes and prepare for the job in your domain.'),nl,nl,
+    write('2. Self-Study to prepare yourself better for the coporate world.'),nl,nl,
     write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
     
 % One can start ones own firm with ones own ideas 
@@ -207,8 +207,8 @@ career(entreprenurship):-
     problemSolver(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('Being an Entreprenuer and startup your own venture.').
+    write("====================================================================="),nl,nl,
+    write('Being an Enterprenuer and startup your own venture.').
     
     
 % If nothing suits your profile drop for a year to prepare better.  
@@ -218,9 +218,9 @@ career(drop):-
     financialRequirement(no),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
-    write('1. Please showcase your venture idea on Investment Portals to get the seed money .'),nl,
-    write('2. Please look for a busineness idea for your venture.'),nl,
+    write("====================================================================="),nl,nl,
+    write('1. Please showcase your venture idea on Investment Portals to get the seed money .'),nl,nl,
+    write('2. Please look for a busineness idea for your venture.'),nl,nl,
     write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
     
 
@@ -243,7 +243,7 @@ career(mba):-
     stressManagment(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
+    write("====================================================================="),nl,nl,
     write(' Master in Business Administration(MBA).').
     
 % One can join as PHD scholar in India or abroad
@@ -260,7 +260,7 @@ career(phd):-
     stressManagment(yes),
     nl,nl,
     write('Career Advice for you Pal are below :'),nl,
-    write("====================================================================="),nl,
+    write("====================================================================="),nl,nl,
     write('Doctarate in Philosophy(PhD).').
     
 % If nothing suits your profile drop for a year to prepare better.  
@@ -269,9 +269,9 @@ career(drop):-
     interestedHigherStudies(yes),
     nl,nl,
     write('Kindly carry out one of the below options to better your chances fo Higher Studies:'),nl,
-    write("====================================================================="),nl,
-    write('1. Please take your time to decide either between MBA or PHD .'),nl,
-    write('3. Please take some time off and rethink your options.'),nl,
+    write("====================================================================="),nl,nl,
+    write('1. Please take your time to decide either between MBA or PHD .'),nl,nl,
+    write('2. Please take some time off and rethink your options.'),nl,nl,
     write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
  
 % ******************************************************************
@@ -858,7 +858,7 @@ introduction:-
     nl,
     write('Welcome to the Career Advisory System'),nl,
     write('*****************************************'),nl,nl,
-    write('INSTRUCTION:To get your propect career, please answer the follwing question, by entering the number displayed against each choice, followed by (.)'), nl, nl.
+    write('INSTRUCTION:To get your career prospect, please provide us with the following informations, by entering the number displayed against each choice, followed by (.)'), nl, nl.
     
   
 % advise_career to advise the suitable career for the candidate
