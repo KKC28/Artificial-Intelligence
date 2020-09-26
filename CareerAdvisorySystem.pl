@@ -1,61 +1,20 @@
 /* Career advisory system */
 /* Advise a M.Tech Student based on his or her interests and performance*/
-
-
-% Main fucntion as the starting of the career advisory portal
-main:-
-    introduction,
-    reset_history,
-    advise_career(_).
-
-
-% Introduction of the portal frontend
-introduction:-
-    write('Hello Pal. Welcome to the Career Advisory System!!'), nl,
-    write('To get your propect career, please answer the follwing question, by entering the number displayed against each choice, followed by (.)'), nl, nl.
-  
-  
-% advise_career to advise the suitable career for the candidate
-advise_career(Career):-
-    career(Career),!.
     
 % ****************************************************
 % Rules
 % ****************************************************  
 
 communicationSkill:-
-    (speaking(four);speaking(five)),
-    (reading(four);reading(five)),
-    (writing(four);writing(five)).
-
-thinkinglogically:-
-    logicorimagination(logic),
-    sensible(no).
-    
-thinkingimaginatically:-
-    logicorimagination(imagination),
-    sensible(no).
-    
-apti:-(aptitude(four);aptitude(five)),!.
-
-coding_power:-(coding(four);coding(five)),!.
+    (speaking(intermediate);speaking(expert));(reading(intermediate);reading(expert));(writing(intermediate);writing(expert)),!.
 
 programming:-(programmingLanguage(intermediate);programmingLanguage(expert)),!.
 
-gateScore_cgpa_apti:-(gateScore(between70to100);cgpa(above9);apti),!.
+gateScore_cgpa:-(gateScore(60);cgpa(8)),!.
 
-skilledCorporate:-(skilled(three);skilled(four);skilled(five)).
-
-skilledEntrepreneur:-(skilled(four);skilled(five)).
-
-participation:-(eventOragniser(yes);committeeMember(yes)).
+participation:-(eventOragniser(yes);committeeMember(yes)),!.
 
 stableLife:-(jobSecurity(yes);stability(yes)).
-% ****************************************************
-% Streams
-% ****************************************************  
-
-
 
 % ****************************************************
 % Prospective Career for M.Tech candidate
@@ -68,37 +27,70 @@ stableLife:-(jobSecurity(yes);stability(yes)).
 % One can coach people for GATE examination
 career(gateCoaching):-
     interestedInTeaching(yes),
-    interestedHigherStudies(no),
-    gateScore_cgpa_apti,
-    stream(cse),
+    interestedInGateCoaching(yes),
+    gateScore_cgpa,
+    aptitude(4),
     interestedCSESubjects(yes),
-    coding_power,
+    coding(4),
     programming,
-    thinkinglogically,
+    logicalReasoning(4),
     communicationSkill,
-    write('Career Adivice for you Pal is Coaching students preparing for CSE GATE').
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('1. Coaching students preparing for GATE exam by joing some GATE coaching centers.'),nl,
+    write('2. Starting your own YouTube channel for coaching GATE aspirants.'),nl,
+    write('3. Opening your own coaching center for training GATE aspirants.'),nl.
+
     
-career(gateCoaching):-
-    interestedInTeaching(yes),
-    interestedHigherStudies(no),
-    gateScore_cgpa_apti,
-    apti,
-    stream(ece),
-    interestedECESubjects(yes),
-    thinkinglogically,
-    communicationSkill,
-    write('Career Adivice for you Pal is Coaching students preparing for ECE GATE').
-    
-% One can join phd and teach as assistant professor
+%One can join phd and teach as assistant professor
 career(assitantProfessor):-
     interestedInTeaching(yes),
-    interestedHigherStudies(yes),
+    interestedInGateCoaching(no),
     interestInResearch(yes),
-    thesisOrCapstone(yes),
+    thesisOrCourses(yes),
+    cgpa(7),
+    teamwork(yes),
+    stressManagment(yes),
     independentWorker(yes),
     attendingConfrences(yes),
-    write('Career Adivice for you Pal is Post Doctarate(PhD)').
+    communicationSkill,
+    logicalReasoning(3),
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Doctarate in Philosophy(PhD) with TF.').
 
+% One can join phd and teach as assistant professor
+career(teacher):-
+    interestedInTeaching(yes),
+    interestedInGateCoaching(no),
+    interestInResearch(no),
+    communicationSkill,
+    logicalReasoning(2),
+    cgpa(7),
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('1. To compelete B.ED and then apply for job as School Teacher.'),nl,
+    write('2. To open your own YouTube channel and teach students of your domain.'),nl,
+    write('3. To open your own Coaching Center and teach students of your domain.'),nl.
+
+% Last option in the teaching domain
+career(drop):-
+    interestedInTeaching(yes),
+    nl,nl,
+    write('Kindly carry out one of the below options to better your chances in Teaching Profile:'),nl,
+    write("====================================================================="),nl,
+    write('1. Take up a Certification Course in Teaching and Training in your domain and apply for the Teaching jobs.'),nl,
+    write('2. Re-take the GATE test to imporve your score to coach GATE Aspirants.'),nl,
+    write('3. Start working on your research domain to better your chances.'),nl,
+    write('2. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
+
+    
 
 % NON-TEACHING PROFILES
 % ----------------------------------------------------
@@ -110,16 +102,21 @@ career(research_corporate_job):-
     interestedHigherStudies(no),
     financialRequirement(yes),
     workingForSomeone(yes),
-    workingInShifts(yes),
     interactionWithPublic(no),
     interestInResearch(yes),
+    workingInShifts(no),
     communicationSkill,
     teamwork(yes),
     handleDeadlines(yes),
     stressManagment(yes),
     prebuildThings(yes),
-    skilledCorporate,
-    write('Career Adivice for you Pal is joining/looking of a Reasrch Corporate Job').
+    skilled(3),
+    cgpa(7),
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Joining/looking for a Corporate Job in research profile.').
 
 % One can work in a corporate world
 career(corporate_job):-
@@ -127,66 +124,106 @@ career(corporate_job):-
     interestedHigherStudies(no),
     financialRequirement(yes),
     workingForSomeone(yes),
-    workingInShifts(yes),
     interactionWithPublic(no),
     interestInResearch(no),
+    prebuildThings(yes),
+    workingInShifts(yes),
     communicationSkill,
     teamwork(yes),
     handleDeadlines(yes),
     stressManagment(yes),
-    prebuildThings(yes),
-    skilledCorporate,
-    write('Career Adivice for you Pal is joining/looking of a Corporate Job').
-
+    skilled(3),
+    cgpa(7),
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Joining/looking for a Corporate Job.').
+    
+    
+% One can work in a corporate world
+career(startup_job):-
+    interestedInTeaching(no),
+    interestedHigherStudies(no),
+    financialRequirement(yes),
+    workingForSomeone(yes),
+    interactionWithPublic(no),
+    interestInResearch(no),
+    prebuildThings(no),
+    communicationSkill,
+    teamwork(yes),
+    handleDeadlines(yes),
+    stressManagment(yes),
+    skilled(4),
+    cgpa(7),
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Joining/looking for a Corporate Job in startups.').
+    
 % One can go for PSU
 career(government_job):-
     interestedInTeaching(no),
     interestedHigherStudies(no),
     financialRequirement(yes),
     workingForSomeone(yes),
-    workingInShifts(yes),
     interactionWithPublic(yes),
-    gateScore_cgpa,
+    workingInShifts(yes),
+    cgpa(6),
     generousBenefits(yes),
-    write('Career Adivice for you Pal is joining/looking of a Government Job').
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Joining/looking for a Government Job.').
     
-    
-% One can join family business
-career(familyBusiness):-
+% If nothing suits your profile drop for a year to prepare better.  
+career(drop):-
     interestedInTeaching(no),
     interestedHigherStudies(no),
     financialRequirement(yes),
-    workingForSomeone(no),
-    interactionWithPublic(no),
-    interestInResearch(no),
-    stability(yes),
-    workingInShifts(yes),
-    workingForSomeone(yes),
-    communicationSkill,
-    teamwork(yes),
-    handleDeadlines(yes),
-    stressManagment(yes),
-    prebuildThings(yes),
-    skilledCorporate,
-    write('Career Adivice for you Pal is joining/looking of a Family Job').
- 
+    nl,nl,
+    write('Kindly carry out one of the below options to better your chances in Non-Teaching Profile:'),nl,
+    write("====================================================================="),nl,
+    write('1. Join some trainaing Institutes and prepare for the job in your domain.'),nl,
+    write('2. Self-Study to prepare yourself better for the coporate world.'),nl,
+    write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
+    
 % One can start ones own firm with ones own ideas 
 career(entreprenurship):-
     interestedInTeaching(no),
     interestedHigherStudies(no),
     financialRequirement(no),
-    interestInResearch(no),
-    novelty(yes),
     workingForSomeone(no),
+    novelty(yes),
     workingInShifts(no),
     stressManagment(yes),
     prebuildThings(no),
-    skilledEntrepreneur,
+    skilled(4),
     communicationSkill,
     initialCapital(yes),
     flexibility(yes),
-    write('Career Adivice for you Pal is being an entreprenue and startup your own venture').
+    problemSolver(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Being an Entreprenuer and startup your own venture.').
     
+    
+% If nothing suits your profile drop for a year to prepare better.  
+career(drop):-
+    interestedInTeaching(no),
+    interestedHigherStudies(no),
+    financialRequirement(no),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('1. Please showcase your venture idea on Investment Portals to get the seed money .'),nl,
+    write('2. Please look for a busineness idea for your venture.'),nl,
+    write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
+    
+
 % HIGHER STUDYING PROFILES
 % ----------------------------------------------------
     
@@ -198,23 +235,44 @@ career(mba):-
     interestInBusiness(yes),
     participation,
     leadership(yes),
-    gateScore_cgpa_apti,
-    write('Career Adivice for you Pal is MBA').
+    cgpa(8),
+    aptitude(4),
+    problemSolver(yes),
+    communicationSkill,
+    teamwork(yes),
+    stressManagment(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write(' Master in Business Administration(MBA).').
     
 % One can join as PHD scholar in India or abroad
 career(phd):-
     interestedInTeaching(no),
     interestedHigherStudies(yes),
     interestInResearch(yes),
-    thesisOrCapstone(yes),
+    thesisOrCourses(yes),
     independentWorker(yes),
     attendingConfrences(yes),
-    write('Career Adivice for you Pal is Post Doctarate(PhD)'). 
+    problemSolver(yes),
+    communicationSkill,
+    teamwork(yes),
+    stressManagment(yes),
+    nl,nl,
+    write('Career Advice for you Pal are below :'),nl,
+    write("====================================================================="),nl,
+    write('Doctarate in Philosophy(PhD).').
     
 % If nothing suits your profile drop for a year to prepare better.  
 career(drop):-
-    write('Career Adivice for you Pal is to take a year drop').
-
+    interestedInTeaching(no),
+    interestedHigherStudies(yes),
+    nl,nl,
+    write('Kindly carry out one of the below options to better your chances fo Higher Studies:'),nl,
+    write("====================================================================="),nl,
+    write('1. Please take your time to decide either between MBA or PHD .'),nl,
+    write('3. Please take some time off and rethink your options.'),nl,
+    write('3. Work on your shortcomings and please retake the Q/A for knowing your career prospect.'),nl.
  
 % ******************************************************************
 % Conditions for each criteria mentioned in respective carrer choice
@@ -223,6 +281,29 @@ career(drop):-
     
 % Coaching for GATE Coaching in CSE/ECE
 %---------------------------------------
+
+problemSolver(Opinion) :-
+    progress(problemSolver,Opinion).
+problemSolver(Opinion) :-
+    \+ progress(problemSolver, _),
+    enquire(problemSolver,Opinion,[yes,no]).
+    
+interestedInGateCoaching(Opinion) :-
+    progress(interestedInGateCoaching,Opinion).
+interestedInGateCoaching(Opinion) :-
+    \+ progress(interestedInGateCoaching, _),
+    enquire(interestedInGateCoaching,Opinion,[yes,no]).
+    
+logicalReasoning(Opinion) :-
+    progress(logicalReasoning,Opinion).
+logicalReasoning(Opinion) :-
+    \+ progress(logicalReasoning, _),
+    query(logicalReasoning),
+    choices([1,2,3,4,5], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[1,2,3,4,5],Result),
+    asserta(progress(logicalReasoning,Result)),
+    Result>=Opinion.
 
 stream(Opinion) :-
     progress(stream,Opinion).
@@ -234,7 +315,12 @@ gateScore(Opinion) :-
     progress(gateScore,Opinion).
 gateScore(Opinion) :-
     \+ progress(gateScore, _),
-    enquire(gateScore,Opinion,[between30to50,between50to70,between70to100]).
+    query(gateScore),
+    choices([30,50,60,70], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[30,50,60,70],Result),
+    asserta(progress(gateScore,Result)),
+    Result>=Opinion.
     
 interestedInTeaching(Opinion) :-
     progress(interestedInTeaching,Opinion).
@@ -246,19 +332,19 @@ speaking(Opinion) :-
     progress(speaking,Opinion).
 speaking(Opinion) :-
     \+ progress(speaking, _),
-    enquire(speaking,Opinion,[one,two,three,four,five]).
+    enquire(speaking,Opinion,[beginner,intermediate,expert]).
     
 reading(Opinion) :-
     progress(reading,Opinion).
 reading(Opinion) :-
     \+ progress(reading, _),
-    enquire(reading,Opinion,[one,two,three,four,five]).
+    enquire(reading,Opinion,[beginner,intermediate,expert]).
     
 writing(Opinion) :-
     progress(writing,Opinion).
 writing(Opinion) :-
     \+ progress(writing, _),
-    enquire(writing,Opinion,[one,two,three,four,five]).
+    enquire(writing,Opinion,[beginner,intermediate,expert]).
     
 logicorimagination(Opinion) :-
     progress(logicorimagination,Opinion).
@@ -271,12 +357,24 @@ sensible(Opinion) :-
 sensible(Opinion) :-
     \+ progress(sensible, _),
     enquire(sensible,Opinion,[yes,no]).
+ 
+timeLimit(Opinion) :-
+    progress(timeLimit,Opinion).
+timeLimit(Opinion) :-
+    \+ progress(timeLimit, _),
+    enquire(timeLimit,Opinion,[full_time,part_time]).
+
     
 cgpa(Opinion) :-
     progress(cgpa,Opinion).
 cgpa(Opinion) :-
     \+ progress(cgpa, _),
-    enquire(cgpa,Opinion,[between6to8,between8to9,above9]).
+    query(cgpa),
+    choices([6,7,8,9], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[6,7,8,9],Result),
+    asserta(progress(cgpa,Result)),
+    Result>=Opinion.
     
 interestedCSESubjects(Opinion) :-
     progress(interestedCSESubjects,Opinion).
@@ -294,19 +392,29 @@ aptitude(Opinion) :-
     progress(aptitude,Opinion).
 aptitude(Opinion) :-
     \+ progress(aptitude, _),
-    enquire(aptitude,Opinion,[one,two,three,four,five]).
+    query(aptitude),
+    choices([1,2,3,4,5], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[1,2,3,4,5],Result),
+    asserta(progress(aptitude,Result)),
+    Result>=Opinion.
     
 coding(Opinion) :-
     progress(coding,Opinion).
 coding(Opinion) :-
     \+ progress(coding, _),
-    enquire(coding,Opinion,[one,two,three,four,five]).
+    query(coding),
+    choices([1,2,3,4,5], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[1,2,3,4,5],Result),
+    asserta(progress(coding,Result)),
+    Result>=Opinion.
     
 programmingLanguage(Opinion) :-
     progress(programmingLanguage,Opinion).
 programmingLanguage(Opinion) :-
     \+ progress(programmingLanguage, _),
-    enquire(programmingLanguage,Opinion,[beginner,intermediate,epxert]).
+    enquire(programmingLanguage,Opinion,[beginner,intermediate,expert]).
     
     
 % Career in Corporate Job
@@ -340,7 +448,12 @@ skilled(Opinion) :-
     progress(skilled,Opinion).
 skilled(Opinion) :-
     \+ progress(skilled, _),
-    enquire(skilled,Opinion,[beginner,intermediate,epxert]).
+    query(skilled),
+    choices([1,2,3,4,5], 1),
+    read(Selected_Choice),
+    getSelectedChoice(Selected_Choice,[1,2,3,4,5],Result),
+    asserta(progress(skilled,Result)),
+    Result>=Opinion.
     
 teamwork(Opinion) :-
     progress(teamwork,Opinion).
@@ -433,11 +546,11 @@ flexibility(Opinion) :-
     
 % Career for PHD
 %---------------------------------------
-thesisOrCapstone(Opinion) :-
-    progress(thesisOrCapstone,Opinion).
-thesisOrCapstone(Opinion) :-
-    \+ progress(thesisOrCapstone, _),
-    enquire(thesisOrCapstone,Opinion,[yes,no]).
+thesisOrCourses(Opinion) :-
+    progress(thesisOrCourses,Opinion).
+thesisOrCourses(Opinion) :-
+    \+ progress(thesisOrCourses, _),
+    enquire(thesisOrCourses,Opinion,[yes,no]).
     
 independentWorker(Opinion) :-
     progress(independentWorker,Opinion).
@@ -484,143 +597,143 @@ interestInBusiness(Opinion) :-
 % Questions asked to get the Opinion
 % ****************************************************
 
-    
-% Coaching for GATE Coaching in CSE/ECE
-%--------------------------------------
 
+query(problemSolver) :-
+    write(' Q. Are you a problem solver ?'), nl.
+    
+query(logicalReasoning) :-
+    write(' Q. How much will you rate yourself in logical reasoning(5 being the highest) ?'), nl.
+  
+query(interestedInGateCoaching) :-
+    write('Q. Are you interested in teaching GATE aspirants ?'), nl.
+
+query(timeLimit) :-
+    write('Q. Are you loooking for a full time or a part time teaching job ?'), nl.
+    
 query(gateScore) :-
-    write('What is your gate score?'), nl.
+    write('Q. What is your GATE score ?'), nl.
     
 query(stream) :-
-    write('Which stream are you from?'), nl.
+    write('Q. Which stream/department are you from ?'), nl.
     
 query(interestedInTeaching) :-
-    write('Are you interested in mentoring/teaching students'), nl.
+    write('Q. Are you looking for a career in Teaching/Mentoring domain ?'), nl.
     
 query(speaking) :-
-    write('How fluent are you in speaking English?'), nl.
+    write('Q. How good are you in speaking English ?'), nl.
     
 query(reading) :-
-    write('How good are you at reading English?'), nl.
+    write('Q. How good are you at reading English ?'), nl.
 
 query(writing) :-
-    write('How good are you at writing English?'), nl.
-    
-query(logicorimagination) :-
-    write('Which do you prefer more Logic or Imagination'), nl.
+    write('Q. How good are you at writing English ?'), nl.    
     
 query(sensible) :-
-    write('Do you let you emotions affect your decisions'), nl.
+    write('Q. Do you let your emotions affect your decisions ?'), nl.
     
 query(cgpa) :-
-    write('What is your CGPA?'), nl.
+    write('Q. What is your CGPA in your highest degree of education pursued currently ?'), nl.
     
 query(interestedECESubjects) :-
-    write('Are your interested in subjects like Diginatl Circuits,Analog Circuits,Signals and Systems,Control System?'), nl.
+    write('Q. Are your interested in subjects like Digital Circuits, Analog Circuits, Signals and Systems, Control System etc ?'), nl.
     
 query(interestedCSESubjects) :-
-    write('Are your interested in subjects like Data Structure/Algorithms, Operatiing System,Computer Networking,DBMS,COA etc ?'), nl.
+    write('Q. Are your interested in subjects like Data Structures & Algorithms, Operatiing System, Database Management System etc ?'), nl.
     
 query(aptitude) :-
-    write('How much would you rate yourself in aptitude?'), nl.
+    write('Q. How much would you rate yourself in aptitude(5 being the highest) ?'), nl.
     
 query(coding) :-
-    write('How much would you rate yourself in coding?'), nl.
+    write('Q. How much would you rate yourself in coding or building program logic(5 being the highest) ?'), nl.
 
 query(programmingLanguage) :-
-    write('How good are you at any programming languages like Java,C++,C,python'), nl.
+    write('Q. How good are you at any programming languages like Java, C++, C, python ?'), nl.
     
 % Career in Corporate Job
 %-------------------------
 
 query(interestedHigherStudies) :-
-    write('Are you interested in going for higher studies?'), nl.
+    write('Q. Do you want to carry on further with your studies ?'), nl.
 
 query(interestInResearch) :-
-    write('Are you interested in research work?'), nl.
+    write('Q. Are you interested in doing research work in your domain?'), nl.
 
 query(handleDeadlines) :-
-    write('Are you capable of handling deadline/s ?'), nl.
+    write('Q. Are you capable of handling deadline/s ?'), nl.
     
 query(stressManagment) :-
-    write('Are you capable of working under stress ?'), nl.
+    write('Q. Are you capable of working under stress ?'), nl.
     
 query(skilled) :-
-    write('How would you rate your skill in your domain?'), nl.
+    write('Q. How skilled are you in your domain/field ?'), nl.
     
 query(teamwork) :-
-    write('Are you a teamwork/collaborator?'), nl.
+    write('Q. Are you a teamworker, capable of doing work collaboratively ?'), nl.
 
 query(workingForSomeone) :-
-    write('Do you like working for someone?'), nl.
+    write('Q. Is it okay for you to work for someone ?'), nl.
     
 query(workingInShifts) :-
-    write('Do you like working at a defined time?'), nl.
+    write('Q. Can your work in asssigned shfts ?'), nl.
 
 query(prebuildThings) :-
-    write('Do you find yourself interested in working on pre-build stuffs?'), nl.
+    write('Q. Do you find yourself interested in working and exploring on pre-build tools and technologies ?'), nl.
 
 query(financialRequirement) :-
-    write('Is money your priority?'), nl.
+    write('Q. Are you looking for financial stability in the near future? '), nl.
 
 % Career in Government Job
 %-------------------------
     
 query(stability) :-
-    write('Are you looking for statbility in life?'), nl.
-    
-query(servingCountryMen) :-
-    write('Do you want to serve your country men/women'), nl.
+    write('Q. Are you looking for stability in life ?'), nl.
     
 query(interactionWithPublic) :-
-    write('Are you looking for a prospect were you get to interact with normal public'), nl.
+    write('Q. Are you looking for a prospect were you get to interact with the common public ?'), nl.
 
 query(jobSecurity) :-
-    write('Are you looking for job security?'), nl.
+    write('Q. Are you looking for job security ?'), nl.
 
 query(generousBenefits) :-
-    write('Are you looking for generous benefits like accompdation,lifelong pension,health benefits?'), nl.
+    write('Q. Are you looking for generous benefits like accomodation,lifelong pension,health benefits ?'), nl.
     
 % Career for Enterepreneurship
 %---------------------------------------
 
 query(novelty) :-
-    write('Do you always look for newness in work your come across to?'), nl.
+    write('Q. Do you always look for novelty in work you come across to ?'), nl.
     
 query(initialCapital) :-
-    write('Do you have an intial capital of more than 5 lakhs to support your venture?'), nl.
+    write('Q. Do you have an intial capital of more than 5 lakhs to support a venture ?'), nl.
 
 query(flexibility) :-
-     write('Are you flexible enough to stretch you time?'), nl.
+     write('Q. Are you flexible enough to stretch your time ?'), nl.
      
  
 % Career for PHD
 %---------------------------------------
 
-query(thesisOrCapstone) :-
-    write('Are you doinga ny thesis or capstone work in your interested domain?'), nl.
+query(thesisOrCourses) :-
+    write('Q. Are you doing any thesis/capstone work or have taken extra courses/extra credits in your interested domain ?'), nl.
     
 query(independentWorker) :-
-    write('Can you work independently?'), nl.
+    write('Q. Can you work independently ?'), nl.
 
-query(leadership) :-
-     write('Do you possess leaderhsip skill or have led in some event or so?'), nl.
+query(attendingConfrences) :-
+     write('Q. Do you like attending to various research conferences ?'), nl.
 
  
 % Career for MBA
 %---------------------------------------
-
-query(eventOragniser) :-
-    write('Were you a part of any event in your college?'), nl.
     
 query(committeeMember) :-
-    write('Are you a member of any committe in your college?'), nl.
+    write('Q. Are you or had you been a member of any committe/s in your college ?'), nl.
 
-query(attendingConfrences) :-
-     write('Do you like attedning to various reseearch confernces?'), nl.
+query(leadership) :-
+     write('Q. Do you possess leaderhsip skill or have been a part of an event of any scale, which you have led ?'), nl.
 
 query(interestInBusiness) :-
-     write('Are you intereseted in busines?'), nl.
+     write('Q. Are you looking for a Managerial Corporate role ?'), nl.
 
 % ****************************************************
 % Recording the choice selcted by the user
@@ -629,36 +742,12 @@ query(interestInBusiness) :-
 
 % Coaching
 %-----------
-
-choice(between30to50) :-
-    write('30-50').
-    
-choice(between50to70) :-
-    write('50-70').
-    
-choice(between70to100) :-
-    write('70-100').
     
 choice(cse) :-
     write('Computer Science and Engineering').
 
 choice(ece) :-
     write('Electronics and Commnunication Engineering').
-    
-choice(one) :-
-    write('1').
-
-choice(two) :-
-    write('2').
-
-choice(three) :-
-    write('3').
-
-choice(four) :-
-    write('4').
-
-choice(five) :-
-    write('5').
     
 choice(1) :-
     write('1').
@@ -675,20 +764,35 @@ choice(4) :-
 choice(5) :-
     write('5').
     
-choice(logic) :-
-    write('Logic').
-    
-choice(imagination) :-
-    write('Imagination').
-    
-choice(between6to8) :-
-    write('6-8').
-    
-choice(between8to9) :-
-    write('8-9').
-    
-choice(above9) :-
+choice(6) :-
+    write('6.0-6.9').
+
+choice(7) :-
+    write('7.0-7.9').
+
+choice(8) :-
+    write('8.0-8.9').
+
+choice(9) :-
     write('9-10').
+    
+choice(full_time) :-
+    write('Full Time').
+    
+choice(part_time) :-
+    write('Part Time').
+    
+choice(30) :-
+    write('30-49').
+    
+choice(50) :-
+    write('50-59').
+    
+choice(60) :-
+    write('60-69').
+    
+choice(70) :-
+    write('70-100').
     
 choice(beginner) :-
     write('Beginner').
@@ -696,8 +800,8 @@ choice(beginner) :-
 choice(intermediate) :-
     write('Intermediate').
     
-choice(epxert) :-
-    write('Epxert').
+choice(expert) :-
+    write('Expert').
     
 choice(yes) :-
     write('Yes.').
@@ -742,60 +846,36 @@ reset_history.
 % To store choices made by the user
 :- dynamic(progress/2).
 
+% Main fucntion as the starting of the career advisory portal
+main:-
+    introduction,
+    reset_history,
+    advise_career(_).
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+% Introduction of the portal frontend
+introduction:-
+    nl,
+    write('Welcome to the Career Advisory System'),nl,
+    write('*****************************************'),nl,nl,
+    write('INSTRUCTION:To get your propect career, please answer the follwing question, by entering the number displayed against each choice, followed by (.)'), nl, nl.
+    
+  
+% advise_career to advise the suitable career for the candidate
+advise_career(Career):-
+    career(Career),!.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+% Reference: https://github.com/calmesam01/Career-Counseling-System
