@@ -104,12 +104,11 @@ career(research_corporate_job):-
     workingForSomeone(yes),
     interactionWithPublic(no),
     interestInResearch(yes),
-    workingInShifts(no),
+    thesisOrCourses(yes),
     communicationSkill,
     teamwork(yes),
     handleDeadlines(yes),
     stressManagment(yes),
-    prebuildThings(yes),
     skilled(3),
     cgpa(7),
     problemSolver(yes),
@@ -674,7 +673,7 @@ query(workingForSomeone) :-
     write('Q. Is it okay for you to work for someone ?'), nl.
     
 query(workingInShifts) :-
-    write('Q. Can your work in asssigned shfts ?'), nl.
+    write('Q. Do you like working in assigned shifts ?'), nl.
 
 query(prebuildThings) :-
     write('Q. Do you find yourself interested in working and exploring on pre-build tools and technologies ?'), nl.
@@ -858,7 +857,7 @@ introduction:-
     nl,
     write('Welcome to the Career Advisory System'),nl,
     write('*****************************************'),nl,nl,
-    write('INSTRUCTION:To get your career prospect, please provide us with the following informations, by entering the number displayed against each choice, followed by (.)'), nl, nl.
+    write('INSTRUCTION:To get your career prospect, please provide us with the  following informations, by entering the number displayed against each choice, followed by (.)'), nl, nl.
     
   
 % advise_career to advise the suitable career for the candidate
